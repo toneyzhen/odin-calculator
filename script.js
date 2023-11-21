@@ -163,14 +163,22 @@ function operationAppend(operation)
     {
         decimalFlag = true;
     }
-    // resetScreenFlag = true;
 }
 
 
 
 function evaluate()
 {
+    if (currentOperation != null)
+    {
+        return;
+    }
     let res = math.evaluate(currentDisplay.textContent);
+    if (res == "Infinity")
+    {
+        alert("divide by 0 error")
+        return;
+    }
     lastDisplay.textContent = currentDisplay.textContent;
     currentDisplay.textContent = res;
     currentOperation = null;
